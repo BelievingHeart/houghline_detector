@@ -1,9 +1,29 @@
-#include "opencv2/highgui.hpp"
-#include "opencv2/imgcodecs.hpp"
-#include "opencv2/imgproc.hpp"
-#include <iostream>
-#include <string>
+#include <cmath>                        // for cos, sin
+#include <opencv2/core/cvdef.h>          // for CV_PI
+#include <iostream>                      // for operator<<, cout, ostream
+#include <opencv2/core/cvstd.hpp>        // for String
+#include <opencv2/core/fast_math.hpp>    // for cvRound
+#include <opencv2/core/mat.hpp>          // for Mat, MatExpr
+#include <opencv2/core/utility.hpp>      // for CommandLineParser
+#include "opencv2/highgui.hpp"           // for imshow, moveWindow, namedWindow
+#include "opencv2/imgproc.hpp"           // for cvtColor, line, putText, COL...
+
 static cv::Mat color_image, output_image;
+int hough_type = 1;
+double rho = 1.0;
+double theta = CV_PI / 180.0;
+double minLineLen = 50, maxLineGap = 50;
+int threshold = 150;
+const double eps = CV_PI / 1000.0;
+
+void put_status(std::string var_name, double v, int height) {
+  cv::putText(color_image,
+              std::string("current ") + var_name + ":      " +
+                  std::to_string(v),
+              cv::Point2i(30, height), cv::FONT_HERSHEY_PLAIN, 1,
+              cv::Scalar(255, 255, 255), 1);
+}
+
 template <typename T> void increment(T &v, T amount, const char *var_name) {
   v += amount;
   const std::string op = amount > 0 ? std::string(" increments by ")
@@ -12,39 +32,43 @@ template <typename T> void increment(T &v, T amount, const char *var_name) {
   cv::putText(color_image, std::string(var_name) + op + std::to_string(amount_),
               cv::Point2i(30, 50), cv::FONT_HERSHEY_SIMPLEX, 0.5,
               cv::Scalar(255, 255, 255), 1);
-  cv::putText(color_image,
-              std::string("current ") + var_name + ": " + std::to_string(v),
-              cv::Point2i(30, 70), cv::FONT_HERSHEY_SIMPLEX, 0.5,
-              cv::Scalar(255, 255, 255), 1);
+
+  put_status("rho", rho, 70);
+  put_status("theta", theta, 90);
+  put_status("threshold", threshold, 110);
+  if (hough_type != 1) {
+    put_status("minLineLen", minLineLen, 130);
+    put_status("maxLineGap", maxLineGap, 150);
+  }
 }
 
 int main(int argc, char **argv) {
   cv::Mat canny;
-  cv::Mat blank = cv::Mat::zeros(100, 300, CV_8U);
+  cv::Mat blank = cv::Mat::zeros(200, 400, CV_8U);
   const char *winName = "hough lines";
-    const char *msgName = "message";
-    cv::namedWindow(msgName, cv::WINDOW_AUTOSIZE);
-    cv::namedWindow(winName, cv::WINDOW_AUTOSIZE);
-    cv::moveWindow(msgName, 200, 300);
-    cv::moveWindow(winName, 500, 300);
-
-  double rho = 1.0;
-  double theta = CV_PI / 180.0;
-  double minLineLen = 50, maxLineGap = 50;
-  int threshold = 150;
-  const double eps = CV_PI / 1000.0;
+  const char *msgName = "message";
+  cv::namedWindow(msgName, cv::WINDOW_AUTOSIZE);
+  cv::namedWindow(winName, cv::WINDOW_AUTOSIZE);
+  cv::moveWindow(msgName, 200, 300);
+  cv::moveWindow(winName, 620, 300);
 
   cv::CommandLineParser parser(
       argc, argv,
-      "{help h ? | | Arg_1: a grayscale image\nArg_2: 1=houghline 2=houghlineP}"
-      "{@image|<none>|}"
-      "{@hough_type|<none>|}");
+      "{help| |This program will run a canny and a houghline detector}"
+      "{image|| a grayscale image}"
+      "{hough_type|2|1=houghline 2=houghlineP}");
+  if (parser.has("help")) {
+    parser.printMessage();
+  }
   cv::Mat input_image =
-      cv::imread(parser.get<cv::String>("@image"), cv::IMREAD_GRAYSCALE);
-  const int hough_type = parser.get<int>("@hough_type");
+      cv::imread(parser.get<cv::String>("image"), cv::IMREAD_GRAYSCALE);
+  hough_type = parser.get<int>("hough_type");
   if (input_image.empty()) {
     std::cout << "Failed to load image: " << argv[1] << '\n';
     return 1;
+  }
+  if (!parser.check()) {
+    parser.printErrors();
   }
   cv::Canny(input_image, canny, 50, 200, 3);
 
@@ -69,7 +93,7 @@ int main(int argc, char **argv) {
         cv::line(output_image, pt1, pt2, cv::Scalar(0, 0, 255), 2, cv::LINE_AA);
       }
       cv::imshow(winName, output_image);
-      char key = static_cast<char>(cv::waitKey(0));
+      auto key = static_cast<char>(cv::waitKey(0));
       if (key == 'q') {
         increment(rho, 0.2, "rho");
       }
@@ -100,8 +124,8 @@ int main(int argc, char **argv) {
         break;
       }
       if (key == 'i') {
-        std::cout << std::string("current rho: \t\t") + std::to_string(rho) + "\n" +
-                         "current theta: \t\t" + std::to_string(theta) +
+        std::cout << std::string("current rho: \t\t") + std::to_string(rho) +
+                         "\n" + "current theta: \t\t" + std::to_string(theta) +
                          "\n"
                          "current threshold: \t" +
                          std::to_string(threshold) + "\n";
@@ -127,7 +151,7 @@ int main(int argc, char **argv) {
                  cv::LINE_AA);
       }
       cv::imshow(winName, output_image);
-      char key = static_cast<char>(cv::waitKey(0));
+      auto key = static_cast<char>(cv::waitKey(0));
       if (key == 'q') {
         increment(rho, 0.2, "rho");
       }
@@ -176,8 +200,8 @@ int main(int argc, char **argv) {
         break;
       }
       if (key == 'i') {
-        std::cout << std::string("current rho: \t\t") + std::to_string(rho) + "\n" +
-                         "current theta: \t\t" + std::to_string(theta) +
+        std::cout << std::string("current rho: \t\t") + std::to_string(rho) +
+                         "\n" + "current theta: \t\t" + std::to_string(theta) +
                          "\n"
                          "current threshold: \t" +
                          std::to_string(threshold) +

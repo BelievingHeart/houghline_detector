@@ -7,16 +7,24 @@
 #IncludeRegexTransform: 
 
 /home/afterburner/CLionProjects/houghline_detector/main.cpp
-opencv2/highgui.hpp
-/home/afterburner/CLionProjects/houghline_detector/opencv2/highgui.hpp
-opencv2/imgcodecs.hpp
-/home/afterburner/CLionProjects/houghline_detector/opencv2/imgcodecs.hpp
-opencv2/imgproc.hpp
-/home/afterburner/CLionProjects/houghline_detector/opencv2/imgproc.hpp
+cmath
+-
+opencv2/core/cvdef.h
+-
 iostream
 -
-string
+opencv2/core/cvstd.hpp
 -
+opencv2/core/fast_math.hpp
+-
+opencv2/core/mat.hpp
+-
+opencv2/core/utility.hpp
+-
+opencv2/highgui.hpp
+/home/afterburner/CLionProjects/houghline_detector/opencv2/highgui.hpp
+opencv2/imgproc.hpp
+/home/afterburner/CLionProjects/houghline_detector/opencv2/imgproc.hpp
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp
