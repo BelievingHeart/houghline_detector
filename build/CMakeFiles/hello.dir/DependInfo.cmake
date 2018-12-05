@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/afterburner/CLionProjects/dft--rotation_acquisition/main.cpp" "/home/afterburner/CLionProjects/dft--rotation_acquisition/build/CMakeFiles/hello.dir/main.cpp.o"
+  "/home/afterburner/CLionProjects/houghline_detector/main.cpp" "/home/afterburner/CLionProjects/houghline_detector/build/CMakeFiles/hello.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

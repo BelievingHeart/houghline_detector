@@ -1,4 +1,4 @@
-# Install script for directory: /home/afterburner/CLionProjects/dft--rotation_acquisition
+# Install script for directory: /home/afterburner/CLionProjects/houghline_detector
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/afterburner/CLionProjects/dft--rotation_acquisition/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/afterburner/CLionProjects/houghline_detector/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
