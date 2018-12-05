@@ -1,1 +1,1 @@
-# dft--rotation_acquisition
+# a convineience tool for detecting hough lines
