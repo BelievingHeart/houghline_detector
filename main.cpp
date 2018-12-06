@@ -1,12 +1,6 @@
 #include "opencv2/highgui.hpp"        // for imshow, moveWindow, namedWindow
 #include "opencv2/imgproc.hpp"        // for cvtColor, line, putText, COL...
-#include <cmath>                      // for cos, sin
 #include <iostream>                   // for operator<<, cout, ostream
-#include <opencv2/core/cvdef.h>       // for CV_PI
-#include <opencv2/core/cvstd.hpp>     // for String
-#include <opencv2/core/fast_math.hpp> // for cvRound
-#include <opencv2/core/mat.hpp>       // for Mat, MatExpr
-#include <opencv2/core/utility.hpp>   // for CommandLineParser
 
 static cv::Mat color_image, output_image;
 int hough_type = 1;
