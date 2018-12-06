@@ -27,16 +27,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/afterburner/CLionProjects/houghline_detector/build"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="hello">
 				<Option output="/home/afterburner/CLionProjects/houghline_detector/build/hello" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/afterburner/CLionProjects/houghline_detector/build"/>
@@ -80,6 +70,16 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 hello/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/afterburner/CLionProjects/houghline_detector/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
