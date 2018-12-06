@@ -27,8 +27,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="hello">
-				<Option output="/home/afterburner/CLionProjects/houghline_detector/build/hello" prefix_auto="0" extension_auto="0"/>
+			<Target title="hough_line_detector">
+				<Option output="/home/afterburner/CLionProjects/houghline_detector/build/hough_line_detector" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/afterburner/CLionProjects/houghline_detector/build"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -45,14 +45,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 hello"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 hough_line_detector"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="hello/fast">
-				<Option output="/home/afterburner/CLionProjects/houghline_detector/build/hello" prefix_auto="0" extension_auto="0"/>
+			<Target title="hough_line_detector/fast">
+				<Option output="/home/afterburner/CLionProjects/houghline_detector/build/hough_line_detector" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/afterburner/CLionProjects/houghline_detector/build"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -69,7 +69,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 hello/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 hough_line_detector/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/afterburner/CLionProjects/houghline_detector/build/Makefile&quot;  VERBOSE=1 clean"/>
@@ -87,7 +87,7 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/afterburner/CLionProjects/houghline_detector/main.cpp">
-			<Option target="hello"/>
+			<Option target="hough_line_detector"/>
 		</Unit>
 		<Unit filename="/home/afterburner/CLionProjects/houghline_detector/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

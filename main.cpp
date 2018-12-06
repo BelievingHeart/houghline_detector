@@ -107,6 +107,13 @@ int main(int argc, char **argv) {
 
       cv::imshow(winName, output_image);
       auto key = static_cast<char>(cv::waitKey(0));
+        if (key == '\r') {
+            cv::imwrite("./hough_line_out.png", output_image);
+            cv::putText(color_image,
+                        "Image writes to ./hough_line_out.png",
+                        cv::Point2i(30, 100), cv::FONT_HERSHEY_PLAIN, 1,
+                        cv::Scalar(255, 255, 255), 1);
+        }
       if (key == 'q') {
         increment(rho, 0.2, "rho");
       }
